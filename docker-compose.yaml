@@ -1,0 +1,28 @@
+services:
+  nats:
+    image: nats:latest
+    container_name: nats-server
+    ports:
+      - "4222:4222" # Client Port
+      - "6222:6222" # Cluster Port
+      - "8222:8222" # HTTP Port
+    command:
+      - "-js" # Enable JetStream
+      - "-mc" # Enable Monitoring
+      - "8222" # Monitoring Port
+      - "--config" # Config File Path
+      - "/etc/nats/nats.conf"
+    volumes:
+      - ./nats.conf:/etc/nats/nats.conf
+      - nats-data:/data
+    networks:
+      - nats-network
+    restart: unless-stopped
+
+volumes:
+  nats-data:
+    driver: local
+
+networks:
+  nats-network:
+    driver: bridge
