@@ -5,7 +5,7 @@ services:
     ports:
       - "4222:4222" # Client Port
       - "6222:6222" # Cluster Port
-      - "8222:8222" # HTTP Port
+      - "8222:8222" # HTTP Monitoring Port
     command:
       - "-js" # Enable JetStream
       - "-mc" # Enable Monitoring
