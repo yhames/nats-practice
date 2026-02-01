@@ -14,7 +14,7 @@ services:
       - "/etc/nats/nats.conf"
     volumes:
       - ./nats.conf:/etc/nats/nats.conf:ro
-      - nats-data:/data
+      - nats-data:/data # Data Persistence for JetStream
     networks:
       - nats-network
     restart: unless-stopped
