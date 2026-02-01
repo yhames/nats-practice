@@ -13,7 +13,7 @@ services:
       - "--config" # Config File Path
       - "/etc/nats/nats.conf"
     volumes:
-      - ./nats.conf:/etc/nats/nats.conf
+      - ./nats.conf:/etc/nats/nats.conf:ro
       - nats-data:/data
     networks:
       - nats-network
